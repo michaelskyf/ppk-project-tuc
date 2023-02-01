@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(huffman-compression LANGUAGES CXX VERSION 0.9.0)
+project(tuc LANGUAGES CXX VERSION 0.9.0)
 
 if(NOT CMAKE_BUILD_TYPE)
 	set(CMAKE_BUILD_TYPE Debug)

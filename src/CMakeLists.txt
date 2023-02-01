@@ -1,7 +1,7 @@
 add_executable(
 	${PROJECT_NAME}
 	main.cpp
-	huffman.cpp
+	gate.cpp
 	)
 
 target_link_libraries(

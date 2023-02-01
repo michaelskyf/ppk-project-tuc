@@ -87,7 +87,7 @@ static bool get_value(GateType type, const std::vector<bool>& inputs)
 		return get_value_neg(inputs);
 
 		default:
-		return UNDEFINED;
+		return false; // TODO: Shouldn't be here
 	}
 }
 
