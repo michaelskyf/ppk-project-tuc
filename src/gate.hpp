@@ -17,7 +17,7 @@ enum class GateType
 	NEG,
 };
 
-enum GateValue
+enum class GateValue
 {
 	ZERO = 0,
 	ONE = 1,

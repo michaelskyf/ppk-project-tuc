@@ -1,5 +1,7 @@
 #include "gate.hpp"
+#include <stdexcept>
 #include <vector>
+#include <string>
 
 static bool get_value_and(const std::vector<bool>& inputs)
 {
@@ -87,7 +89,7 @@ static bool get_value(GateType type, const std::vector<bool>& inputs)
 		return get_value_neg(inputs);
 
 		default:
-		return false; // TODO: Shouldn't be here
+		throw std::runtime_error(std::string("Invalid gate type at") + __FILE__ + ": " + std::to_string(__LINE__));
 	}
 }
 
@@ -96,7 +98,7 @@ GateValue get_gate_value(Gate& gate, std::map<size_t, Gate>& nodes)
 	std::vector<bool> input_values;
 
 	// Return the value if it is already set
-	if(gate.value != UNDEFINED)
+	if(gate.value != GateValue::UNDEFINED)
 	{
 		return gate.value;
 	}
@@ -104,7 +106,7 @@ GateValue get_gate_value(Gate& gate, std::map<size_t, Gate>& nodes)
 	// Collect all values from inputs
 	for(size_t nodeID : gate.inputs)
 	{
-		GateValue v = UNDEFINED;
+		GateValue v = GateValue::UNDEFINED;
 		try
 		{
 			v = get_gate_value(nodes.at(nodeID), nodes);
@@ -113,23 +115,23 @@ GateValue get_gate_value(Gate& gate, std::map<size_t, Gate>& nodes)
 		{}
 
 		// If at least one input is invalid, we can't get the value of current gate
-		if(v == UNDEFINED)
+		if(v == GateValue::UNDEFINED)
 		{
-			return UNDEFINED;
+			return GateValue::UNDEFINED;
 		}
 
-		input_values.push_back(v);
+		input_values.push_back((bool)v);
 	}
 
 	// Return and set the value according to a gate type
 	bool value = get_value(gate.type, input_values);
 	if(value)
 	{
-		gate.value = ONE;
+		gate.value = GateValue::ONE;
 	}
 	else
 	{
-		gate.value = ZERO;
+		gate.value = GateValue::ZERO;
 	}
 
 	return gate.value;
