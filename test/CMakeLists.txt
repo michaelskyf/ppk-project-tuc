@@ -3,6 +3,9 @@ set(TEST_EXECUTABLE "${PROJECT_NAME}-test")
 add_executable(
 	${TEST_EXECUTABLE}
 	gate.cpp
+	simulator.cpp
+	../src/parser_input.cpp
+	../src/parser_circuit.cpp
 	)
 
 target_link_libraries(

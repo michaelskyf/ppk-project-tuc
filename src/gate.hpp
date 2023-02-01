@@ -8,6 +8,7 @@ enum class GateType
 {
 	UNDEFINED,
 	INPUT,
+	OUTPUT,
 	AND,
 	NAND,
 	OR,

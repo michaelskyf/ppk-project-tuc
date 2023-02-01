@@ -13,10 +13,8 @@ struct Input
 /**
  * @brief Parsed single line from the input file
  */
-struct InputLine
-{
-	std::vector<Input> inputs;
-};
+typedef std::vector<Input> InputLine;
+typedef InputLine OutputLine;
 
 /**
  * @brief Parse given file

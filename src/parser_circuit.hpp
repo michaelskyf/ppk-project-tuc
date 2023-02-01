@@ -8,6 +8,7 @@
 
 #include <cstddef>
 #include <vector>
+#include <string>
 #include "gate.hpp"
 
 /**
@@ -19,3 +20,8 @@ struct ParsedGate
 	GateType type = GateType::UNDEFINED;
 	std::vector<size_t> nodes;
 };
+
+/**
+ * @brief Parse given file
+ */
+std::vector<ParsedGate> get_circuit(const std::string& filename);
