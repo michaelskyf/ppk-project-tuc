@@ -1,0 +1,38 @@
+name: MacOS
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+    defaults:
+      run:
+        shell: bash
+
+jobs:
+  macos:
+    name: Build project for MacOS with ${{matrix.compiler.name}}
+    runs-on: macos-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler:
+          - {name: GCC, cxx: g++}
+          - {name: Clang, cxx: clang++}
+
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v3
+
+      - name: Update git submodules
+        run: git submodule update --init
+
+      - name: Install dependencies
+        run: brew install googletest
+
+      - name: Run CMake
+        run: cmake . -DCMAKE_CXX_COMPILER=${{matrix.compiler.cxx}}
+
+      - name: Run tests
+        run: make all test
