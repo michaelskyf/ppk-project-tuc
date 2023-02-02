@@ -111,7 +111,7 @@ OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input
 				throw std::runtime_error("Error");
 			}
 
-			result.emplace_back(out, (value == GateValue::ONE ? true : false));
+			result.push_back({out, value == GateValue::ONE ? true : false});
 		}
 		catch(...)
 		{
@@ -123,10 +123,44 @@ OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input
 	return result;
 }
 
+std::string get_optarg(int& index, int argc, char* argv[])
+{
+	if(++index >= argc)
+	{
+		return {};
+	}
+
+	return argv[index];
+}
+
 int simulate(int argc, char* argv[])
 {
-	// Get arguments from the command line
+	// Get the arguments from the command line
 	std::string circuit_file, input_file, output_file;
+
+	for(int i = 0; i < argc; i++)
+	{
+		std::string current_arg(argv[i]);
+		std::string optarg = get_optarg(i, argc, argv);
+
+		if(current_arg == "-u")
+		{
+			circuit_file = optarg;
+		}
+		else if(current_arg == "-i")
+		{
+			input_file = optarg;
+		}
+		else if(current_arg == "-o")
+		{
+			output_file = optarg;
+		}
+		else
+		{
+			print_help(argv[0], std::cerr);
+			exit(EXIT_FAILURE);
+		}
+	}
 
 	// If the required arguments were not given, print help message and exit
 	if(circuit_file.empty() || input_file.empty() || output_file.empty())
