@@ -4,6 +4,9 @@
 #include <cstddef>
 #include <map>
 
+/**
+ * @brief Enumerator containing valid gate types
+ */
 enum class GateType
 {
 	UNDEFINED,
@@ -18,6 +21,9 @@ enum class GateType
 	NEG,
 };
 
+/**
+ * @brief Enumerator containing valid values that a gate can have
+ */
 enum class GateValue
 {
 	ZERO = 0,
@@ -25,6 +31,9 @@ enum class GateValue
 	UNDEFINED,
 };
 
+/**
+ * @brief Structure used for simulating a single gate
+ */
 struct Gate
 {
 	GateType type = GateType::UNDEFINED;
@@ -40,7 +49,7 @@ struct Gate
  * @param[in,out]	nodes	Map of all nodes in the circuit
  *
  * @return
- *			- ZERO or ONE on success
- *			- UNDEFINED on failure
+ *			- GateValue::ZERO or GateValue::ONE on success
+ *			- GateValue::UNDEFINED on failure
  */
 GateValue get_gate_value(Gate& gate, std::map<size_t, Gate>& nodes);

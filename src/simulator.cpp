@@ -19,6 +19,9 @@
 
 typedef std::vector<size_t> OutputIDs;
 
+/**
+ * @brief Display help message
+ */
 void print_help(const std::string& program_name, std::ostream& stream)
 {
 	stream << "Usage: " << program_name << " -u [FILE] -i [FILE] -o [FILE]" << std::endl
@@ -29,6 +32,12 @@ void print_help(const std::string& program_name, std::ostream& stream)
 
 /**
  * @brief Convert initially parsed vector of gates to a map containing these gates
+ *
+ * @param[in]	parsed_gates	Vector of unprocessed gates
+ *
+ * @return
+ *			- first: Map with the whole circuit
+ *			- second: Vector with IDs of output nodes
  */
 std::pair<std::map<size_t, Gate>, OutputIDs> prepare_simulation(const std::vector<ParsedGate>& parsed_gates)
 {
@@ -85,6 +94,19 @@ std::pair<std::map<size_t, Gate>, OutputIDs> prepare_simulation(const std::vecto
 	return {result, outputs};
 }
 
+/**
+ * @brief Resolve the outputs in the circuit
+ *
+ * @param[in]	nodes	Map of all logic gates
+ *
+ * @param[in]	input	Values of the input nodes
+ *
+ * @param[in]	outputs	Vector containing IDs of output nodes
+ *
+ * @return
+ *			- success: Non-empty vector of output values
+ *			- failure: Empty vector
+ */
 OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input, const std::vector<size_t>& outputs)
 {
 	OutputLine result;
@@ -125,6 +147,9 @@ OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input
 	return result;
 }
 
+/**
+ * @brief Helper function used for extracting option argument from the argument vector
+ */
 std::string get_optarg(int& index, int argc, char* argv[])
 {
 	if(++index >= argc)

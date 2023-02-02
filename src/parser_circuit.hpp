@@ -22,6 +22,10 @@ struct ParsedGate
 };
 
 /**
- * @brief Parse given file
+ * @brief Extract nodes from the circuit file
+ *
+ * @param[in]	filename	Path to the file containing the circuit
+ *
+ * @return		Vector of unprocessed logic gates, inputs and outputs
  */
 std::vector<ParsedGate> get_circuit(const std::string& filename);
