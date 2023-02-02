@@ -16,9 +16,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'ppk-project-huffman'
-copyright = '2023, Michał Kostrzewski'
-author = 'Michał Kostrzewski'
+project = 'TUC'
+copyright = '2023, Oskar Mesjasz'
+author = 'Oskar Mesjasz'
 
 
 # -- General configuration ---------------------------------------------------
@@ -70,8 +70,8 @@ breathe_domain_by_extension = {
         "hpp" : "cpp",
         "cpp" : "cpp",
         }
-breathe_projects = { "ppk-project-huffman": "build/xml/" }
-breathe_default_project = "ppk-project-huffman"
+breathe_projects = { "TUC": "build/xml/" }
+breathe_default_project = "TUC"
 
 latex_engine = 'xelatex'
 latex_elements = {
@@ -80,15 +80,7 @@ latex_elements = {
 \setsansfont{DejaVu Sans}
 \setmonofont{DejaVu Sans Mono}
 ''',
-    'preamble': r'''
-\usepackage[titles]{tocloft}
-\cftsetpnumwidth {1.25cm}\cftsetrmarg{1.5cm}
-\setlength{\cftchapnumwidth}{0.75cm}
-\setlength{\cftsecindent}{\cftchapnumwidth}
-\setlength{\cftsecnumwidth}{1.25cm}
-''',
     'fncychap': r'\usepackage[Bjornstrup]{fncychap}',
     'printindex': r'\footnotesize\raggedright\printindex',
     'extraclassoptions': r'openany,oneside'
 }
-latex_show_urls = 'footnote'
