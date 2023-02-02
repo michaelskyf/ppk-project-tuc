@@ -6,14 +6,16 @@
  */
 
 #include <cstdlib>
+#include <ios>
 #include <iostream>
-#include <ostream>
+#include <fstream>
 #include <stdexcept>
 #include <vector>
 #include "gate.hpp"
 #include "parser_circuit.hpp"
 #include "parser_input.hpp"
 #include "simulator.hpp"
+#include "output_writer.hpp"
 
 typedef std::vector<size_t> OutputIDs;
 
@@ -158,7 +160,7 @@ int simulate(int argc, char* argv[])
 		else
 		{
 			print_help(argv[0], std::cerr);
-			exit(EXIT_FAILURE);
+			return -1;
 		}
 	}
 
@@ -166,7 +168,7 @@ int simulate(int argc, char* argv[])
 	if(circuit_file.empty() || input_file.empty() || output_file.empty())
 	{
 		print_help(argv[0], std::cerr);
-		exit(EXIT_FAILURE);
+		return -1;
 	}
 
 	// Prepare the environment
@@ -185,6 +187,20 @@ int simulate(int argc, char* argv[])
 		{
 			output.emplace_back(std::move(output_line));
 		}
+	}
+
+	// Write the output to the given file
+	std::ofstream file(output_file);
+	if(!file)
+	{
+		std::cerr << "Failed to open output file" << std::endl;
+		return -1;
+	}
+
+	if(output_write(file, input_lines, output) == false)
+	{
+		std::cerr << "Error while writing to output file" << std::endl;
+		return -1;
 	}
 
 	return 0;

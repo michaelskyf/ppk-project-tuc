@@ -6,6 +6,7 @@ add_executable(
 	simulator.cpp
 	../src/parser_input.cpp
 	../src/parser_circuit.cpp
+	../src/output_writer.cpp
 	)
 
 target_link_libraries(

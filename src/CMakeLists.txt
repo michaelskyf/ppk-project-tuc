@@ -5,6 +5,7 @@ add_executable(
 	simulator.cpp
 	parser_input.cpp
 	parser_circuit.cpp
+	output_writer.cpp
 	)
 
 target_link_libraries(
