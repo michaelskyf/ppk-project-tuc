@@ -19,7 +19,7 @@ typedef std::vector<size_t> OutputIDs;
 
 void print_help(const std::string& program_name, std::ostream& stream)
 {
-	stream << "Usage: " << program_name << "-u [FILE] -i [FILE] -o [FILE]" << std::endl
+	stream << "Usage: " << program_name << " -u [FILE] -i [FILE] -o [FILE]" << std::endl
 		<< "-u file containing a circuit" << std::endl
 		<< "-i input file containing input states" << std::endl
 		<< "-o output file containing output states" << std::endl;
@@ -138,7 +138,7 @@ int simulate(int argc, char* argv[])
 	// Get the arguments from the command line
 	std::string circuit_file, input_file, output_file;
 
-	for(int i = 0; i < argc; i++)
+	for(int i = 1; i < argc; i++)
 	{
 		std::string current_arg(argv[i]);
 		std::string optarg = get_optarg(i, argc, argv);
