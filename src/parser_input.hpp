@@ -10,11 +10,13 @@ struct Input
 	bool value;
 };
 
+typedef Input Output;
+
 /**
  * @brief Parsed single line from the input file
  */
 typedef std::vector<Input> InputLine;
-typedef InputLine OutputLine;
+typedef std::vector<Output> OutputLine;
 
 /**
  * @brief Parse given file

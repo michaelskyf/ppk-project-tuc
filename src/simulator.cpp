@@ -9,10 +9,13 @@
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
+#include <vector>
 #include "gate.hpp"
 #include "parser_circuit.hpp"
 #include "parser_input.hpp"
 #include "simulator.hpp"
+
+typedef std::vector<size_t> OutputIDs;
 
 void print_help(const std::string& program_name, std::ostream& stream)
 {
@@ -22,27 +25,13 @@ void print_help(const std::string& program_name, std::ostream& stream)
 		<< "-o output file containing output states" << std::endl;
 }
 
-std::vector<size_t> get_outputs(const std::map<size_t, Gate>& nodes)
-{
-	std::vector<size_t> result;
-
-	for(const auto& node : nodes)
-	{
-		if(node.second.type == GateType::OUTPUT)
-		{
-			result.emplace_back(node.first);
-		}
-	}
-
-	return result;
-}
-
 /**
  * @brief Convert initially parsed vector of gates to a map containing these gates
  */
-std::map<size_t, Gate> prepare_simulation(const std::vector<ParsedGate>& parsed_gates)
+std::pair<std::map<size_t, Gate>, OutputIDs> prepare_simulation(const std::vector<ParsedGate>& parsed_gates)
 {
 	std::map<size_t, Gate> result;
+	OutputIDs outputs;
 
 	for(const auto& gate : parsed_gates)
 	{
@@ -70,29 +59,33 @@ std::map<size_t, Gate> prepare_simulation(const std::vector<ParsedGate>& parsed_
 		new_gate.type = gate.type;
 		new_gate.value = GateValue::UNDEFINED;
 
-		if(new_gate.type != GateType::INPUT && new_gate.type != GateType::OUTPUT)
-		{
-			new_gate.inputs = {gate.nodes.begin(), gate.nodes.end()-1};
-			result.emplace(gate.nodes.back(), new_gate);
-		}
-		else
+		if(new_gate.type == GateType::INPUT)
 		{
 			for(size_t id : gate.nodes)
 			{
 				result.emplace(id, new_gate);
 			}
 		}
+		else if(new_gate.type == GateType::OUTPUT)
+		{
+			for(size_t id : gate.nodes)
+			{
+				outputs.emplace_back(id);
+			}
+		}
+		else
+		{
+			new_gate.inputs = {gate.nodes.begin(), gate.nodes.end()-1};
+			result.emplace(gate.nodes.back(), new_gate);
+		}
 	}
 
-	return result;
+	return {result, outputs};
 }
 
-OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input)
+OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input, const std::vector<size_t>& outputs)
 {
 	OutputLine result;
-
-	// Get all outputs of the circuit
-	auto outputs = get_outputs(nodes);
 
 	// Set the values of the inputs
 	for(const auto& in : input)
@@ -145,13 +138,15 @@ int simulate(int argc, char* argv[])
 	// Prepare the environment
 	auto input_lines = get_inputs(input_file);
 	auto parsed_gates = get_circuit(circuit_file);
-	auto nodes = prepare_simulation(parsed_gates);
+	auto prepared = prepare_simulation(parsed_gates);
+	auto& nodes = prepared.first;
+	const auto& output_ids = prepared.second;
 	std::vector<OutputLine> output;
 
 	// Simulate the circuit for different inputs
 	for(const auto& input : input_lines)
 	{
-		auto output_line = simulate_circuit(nodes, input);
+		auto output_line = simulate_circuit(nodes, input, output_ids);
 		if(!output_line.empty())
 		{
 			output.emplace_back(std::move(output_line));

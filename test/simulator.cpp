@@ -27,17 +27,19 @@ TEST(simulator_cpp, simulation)
 	{
 		{{3, 0}},
 		{{3, 1}},
-		{{3, 0}},
 		{{3, 1}},
+		{{3, 0}},
 	};
 	std::vector<OutputLine> output;
 
-	auto nodes = prepare_simulation(test_circuit);
+	auto prepared = prepare_simulation(test_circuit);
+	auto& nodes = prepared.first;
+	const auto& output_ids = prepared.second;
 	EXPECT_FALSE(nodes.empty());
 
 	for(const auto& input : test_input)
 	{
-		auto output_line = simulate_circuit(nodes, input);
+		auto output_line = simulate_circuit(nodes, input, output_ids);
 		if(!output_line.empty())
 		{
 			output.emplace_back(std::move(output_line));
