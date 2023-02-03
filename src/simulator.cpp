@@ -216,7 +216,7 @@ int simulate(int argc, char* argv[])
 		auto output_line = simulate_circuit(nodes, input, output_ids);
 		if(!output_line.empty())
 		{
-			output.emplace_back(std::move(output_line));
+			output.emplace_back(output_line);
 		}
 	}
 
@@ -233,6 +233,8 @@ int simulate(int argc, char* argv[])
 		std::cerr << "Error while writing to output file" << std::endl;
 		return -1;
 	}
+
+	file.close();;
 
 	return 0;
 }

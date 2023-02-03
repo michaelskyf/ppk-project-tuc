@@ -8,15 +8,15 @@
 Input get_single_input(const std::string& data)
 {
 	Input result;
-	size_t tmp;
+	std::stringstream ss(data);
 
-	int vars_written = sscanf(data.data(), "%lu:%lu", &result.nodeID, &tmp);
-	if(vars_written != 2)
+	char tmp;
+
+	if(!(ss >> result.nodeID && ss >> tmp && ss >> result.value))
 	{
 		return {};
 	}
 
-	result.value = tmp;
 	return result;
 }
 
