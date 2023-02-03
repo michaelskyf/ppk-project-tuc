@@ -139,7 +139,7 @@ OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input
 		}
 		catch(...)
 		{
-			std::cerr << "Error while processing output '" << "'. Aborting" << std::endl;
+			std::cerr << "Error while processing output '" << out << "'. Aborting" << std::endl;
 			return {};
 		}
 	}
