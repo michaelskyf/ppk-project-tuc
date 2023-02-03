@@ -1,0 +1,45 @@
+\hypertarget{parser__circuit_8cpp}{}\doxysection{parser\+\_\+circuit.\+cpp File Reference}
+\label{parser__circuit_8cpp}\index{parser\_circuit.cpp@{parser\_circuit.cpp}}
+
+
+Functions and structures related to parsing the circuit file.  
+
+
+{\ttfamily \#include \char`\"{}parser\+\_\+circuit.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{parser__circuit_8cpp_a6025df90379674d984d9c308771e5b34}\label{parser__circuit_8cpp_a6025df90379674d984d9c308771e5b34}} 
+Gate\+Type {\bfseries get\+\_\+type} (const std\+::string \&str)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structParsedGate}{Parsed\+Gate}} $>$ \mbox{\hyperlink{parser__circuit_8cpp_a25bec0160c79b87edc56a72810622576}{get\+\_\+circuit}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Extract nodes from the circuit file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions and structures related to parsing the circuit file. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parser__circuit_8cpp_a25bec0160c79b87edc56a72810622576}\label{parser__circuit_8cpp_a25bec0160c79b87edc56a72810622576}} 
+\index{parser\_circuit.cpp@{parser\_circuit.cpp}!get\_circuit@{get\_circuit}}
+\index{get\_circuit@{get\_circuit}!parser\_circuit.cpp@{parser\_circuit.cpp}}
+\doxysubsubsection{\texorpdfstring{get\_circuit()}{get\_circuit()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structParsedGate}{Parsed\+Gate}} $>$ get\+\_\+circuit (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Extract nodes from the circuit file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & Path to the file containing the circuit\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of unprocessed logic gates, inputs and outputs 
+\end{DoxyReturn}

@@ -1,0 +1,77 @@
+\hypertarget{gate_8hpp}{}\doxysection{gate.\+hpp File Reference}
+\label{gate_8hpp}\index{gate.hpp@{gate.hpp}}
+
+
+Structures, enums and functions related to the gate representation.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGate}{Gate}}
+\begin{DoxyCompactList}\small\item\em Structure used for simulating a single gate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{gate_8hpp_a842ca6790f315b3f79faf3cda6d6789c}\label{gate_8hpp_a842ca6790f315b3f79faf3cda6d6789c}} 
+enum class \mbox{\hyperlink{gate_8hpp_a842ca6790f315b3f79faf3cda6d6789c}{Gate\+Type}} \{ \newline
+{\bfseries UNDEFINED}
+, {\bfseries INPUT}
+, {\bfseries OUTPUT}
+, {\bfseries AND}
+, \newline
+{\bfseries NAND}
+, {\bfseries OR}
+, {\bfseries NOR}
+, {\bfseries XOR}
+, \newline
+{\bfseries XNOR}
+, {\bfseries NEG}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerator containing valid gate types. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{gate_8hpp_a4bfe935eef0054405b362deea3a7b4af}\label{gate_8hpp_a4bfe935eef0054405b362deea3a7b4af}} 
+enum class \mbox{\hyperlink{gate_8hpp_a4bfe935eef0054405b362deea3a7b4af}{Gate\+Value}} \{ {\bfseries ZERO} = 0
+, {\bfseries ONE} = 1
+, {\bfseries UNDEFINED}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerator containing valid values that a gate can have. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gate_8hpp_a4bfe935eef0054405b362deea3a7b4af}{Gate\+Value}} \mbox{\hyperlink{gate_8hpp_afedec44f39300ea34ca8ac43fc26b3d6}{get\+\_\+gate\+\_\+value}} (\mbox{\hyperlink{structGate}{Gate}} \&gate, std\+::map$<$ size\+\_\+t, \mbox{\hyperlink{structGate}{Gate}} $>$ \&nodes)
+\begin{DoxyCompactList}\small\item\em Recursively get the value of the gate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structures, enums and functions related to the gate representation. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gate_8hpp_afedec44f39300ea34ca8ac43fc26b3d6}\label{gate_8hpp_afedec44f39300ea34ca8ac43fc26b3d6}} 
+\index{gate.hpp@{gate.hpp}!get\_gate\_value@{get\_gate\_value}}
+\index{get\_gate\_value@{get\_gate\_value}!gate.hpp@{gate.hpp}}
+\doxysubsubsection{\texorpdfstring{get\_gate\_value()}{get\_gate\_value()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gate_8hpp_a4bfe935eef0054405b362deea3a7b4af}{Gate\+Value}} get\+\_\+gate\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGate}{Gate}} \&}]{gate,  }\item[{std\+::map$<$ size\+\_\+t, \mbox{\hyperlink{structGate}{Gate}} $>$ \&}]{nodes }\end{DoxyParamCaption})}
+
+
+
+Recursively get the value of the gate. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em gate} & Current gate\\
+\hline
+\mbox{\texttt{ in,out}}  & {\em nodes} & Map of all nodes in the circuit\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item Gate\+Value\+::\+ZERO or Gate\+Value\+::\+ONE on success
+\item Gate\+Value\+::\+UNDEFINED on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}

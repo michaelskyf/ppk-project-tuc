@@ -1,3 +1,9 @@
+/**
+ * @file parser_input.hpp
+ *
+ * @brief Functions and structures related to parsing the input file
+ */
+
 #pragma once
 
 #include <cstddef>
@@ -9,7 +15,9 @@
  */
 struct Input
 {
+	/// ID of the node
 	size_t nodeID;
+	/// Binary representation of the state of the node
 	bool value;
 };
 

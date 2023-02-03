@@ -1,0 +1,58 @@
+\hypertarget{parser__input_8hpp}{}\doxysection{parser\+\_\+input.\+hpp File Reference}
+\label{parser__input_8hpp}\index{parser\_input.hpp@{parser\_input.hpp}}
+
+
+Functions and structures related to parsing the input file.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structInput}{Input}}
+\begin{DoxyCompactList}\small\item\em Structure used for reading inputs/writing outputs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{parser__input_8hpp_ab2b7ecfbbceeeafb650a8f92a87714b2}\label{parser__input_8hpp_ab2b7ecfbbceeeafb650a8f92a87714b2}} 
+typedef \mbox{\hyperlink{structInput}{Input}} {\bfseries Output}
+\item 
+\mbox{\Hypertarget{parser__input_8hpp_a067d9d3bfa00dd633e6dbe9ec731f6dd}\label{parser__input_8hpp_a067d9d3bfa00dd633e6dbe9ec731f6dd}} 
+typedef std\+::vector$<$ \mbox{\hyperlink{structInput}{Input}} $>$ {\bfseries Input\+Line}
+\item 
+\mbox{\Hypertarget{parser__input_8hpp_a4c6b81110bb27355d772a9cdc43d48a9}\label{parser__input_8hpp_a4c6b81110bb27355d772a9cdc43d48a9}} 
+typedef std\+::vector$<$ \mbox{\hyperlink{structInput}{Output}} $>$ {\bfseries Output\+Line}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ Input\+Line $>$ \mbox{\hyperlink{parser__input_8hpp_a85ee87cf623a468e2ab61dc04e038094}{get\+\_\+inputs}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Parse given file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions and structures related to parsing the input file. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parser__input_8hpp_a85ee87cf623a468e2ab61dc04e038094}\label{parser__input_8hpp_a85ee87cf623a468e2ab61dc04e038094}} 
+\index{parser\_input.hpp@{parser\_input.hpp}!get\_inputs@{get\_inputs}}
+\index{get\_inputs@{get\_inputs}!parser\_input.hpp@{parser\_input.hpp}}
+\doxysubsubsection{\texorpdfstring{get\_inputs()}{get\_inputs()}}
+{\footnotesize\ttfamily std\+::vector$<$ Input\+Line $>$ get\+\_\+inputs (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Parse given file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & Path to the file containing inputs\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of input lines 
+\end{DoxyReturn}

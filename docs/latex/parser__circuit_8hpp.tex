@@ -1,0 +1,47 @@
+\hypertarget{parser__circuit_8hpp}{}\doxysection{parser\+\_\+circuit.\+hpp File Reference}
+\label{parser__circuit_8hpp}\index{parser\_circuit.hpp@{parser\_circuit.hpp}}
+
+
+Functions and structures related to parsing the circuit file.  
+
+
+{\ttfamily \#include $<$cstddef$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}gate.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structParsedGate}{Parsed\+Gate}}
+\begin{DoxyCompactList}\small\item\em Contains information about a specific gate/input (intermediate struct between text and struct \mbox{\hyperlink{structGate}{Gate}}) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{structParsedGate}{Parsed\+Gate}} $>$ \mbox{\hyperlink{parser__circuit_8hpp_a25bec0160c79b87edc56a72810622576}{get\+\_\+circuit}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Extract nodes from the circuit file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions and structures related to parsing the circuit file. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{parser__circuit_8hpp_a25bec0160c79b87edc56a72810622576}\label{parser__circuit_8hpp_a25bec0160c79b87edc56a72810622576}} 
+\index{parser\_circuit.hpp@{parser\_circuit.hpp}!get\_circuit@{get\_circuit}}
+\index{get\_circuit@{get\_circuit}!parser\_circuit.hpp@{parser\_circuit.hpp}}
+\doxysubsubsection{\texorpdfstring{get\_circuit()}{get\_circuit()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structParsedGate}{Parsed\+Gate}} $>$ get\+\_\+circuit (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Extract nodes from the circuit file. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & Path to the file containing the circuit\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of unprocessed logic gates, inputs and outputs 
+\end{DoxyReturn}

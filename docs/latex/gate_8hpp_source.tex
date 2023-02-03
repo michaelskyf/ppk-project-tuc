@@ -1,0 +1,42 @@
+\hypertarget{gate_8hpp_source}{}\doxysection{gate.\+hpp}
+\label{gate_8hpp_source}\index{gate.hpp@{gate.hpp}}
+\mbox{\hyperlink{gate_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{gate_8hpp_a842ca6790f315b3f79faf3cda6d6789c}{GateType}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ UNDEFINED,}
+\DoxyCodeLine{00019\ \ \ \ \ INPUT,}
+\DoxyCodeLine{00020\ \ \ \ \ OUTPUT,}
+\DoxyCodeLine{00021\ \ \ \ \ AND,}
+\DoxyCodeLine{00022\ \ \ \ \ NAND,}
+\DoxyCodeLine{00023\ \ \ \ \ OR,}
+\DoxyCodeLine{00024\ \ \ \ \ NOR,}
+\DoxyCodeLine{00025\ \ \ \ \ XOR,}
+\DoxyCodeLine{00026\ \ \ \ \ XNOR,}
+\DoxyCodeLine{00027\ \ \ \ \ NEG,}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{gate_8hpp_a4bfe935eef0054405b362deea3a7b4af}{GateValue}}}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ ZERO\ =\ 0,}
+\DoxyCodeLine{00036\ \ \ \ \ ONE\ =\ 1,}
+\DoxyCodeLine{00037\ \ \ \ \ UNDEFINED,}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGate}{Gate}}}
+\DoxyCodeLine{00044\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{gate_8hpp_a842ca6790f315b3f79faf3cda6d6789c}{GateType}}\ \mbox{\hyperlink{structGate_ab20b9436feacde48bf3a56115625f634}{type}}\ =\ GateType::UNDEFINED;}
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<size\_t>\ \mbox{\hyperlink{structGate_abf8c4a12403ee079856e9d2253e83860}{inputs}};}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{gate_8hpp_a4bfe935eef0054405b362deea3a7b4af}{GateValue}}\ \mbox{\hyperlink{structGate_a863ea8f1d79e80d19a7ab71b8fcc425f}{value}}\ =\ GateValue::UNDEFINED;}
+\DoxyCodeLine{00051\ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00064\ \mbox{\hyperlink{gate_8hpp_a4bfe935eef0054405b362deea3a7b4af}{GateValue}}\ \mbox{\hyperlink{gate_8hpp_afedec44f39300ea34ca8ac43fc26b3d6}{get\_gate\_value}}(\mbox{\hyperlink{structGate}{Gate}}\&\ gate,\ std::map<size\_t,\ Gate>\&\ nodes);}
+
+\end{DoxyCode}

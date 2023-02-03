@@ -1,3 +1,9 @@
+/**
+ * @file simulator.hpp
+ *
+ * @brief Header containing the main function of the program
+ */
+
 #pragma once
 
 /**

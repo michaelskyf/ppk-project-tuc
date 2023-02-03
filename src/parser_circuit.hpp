@@ -1,8 +1,8 @@
 /**
- * @file parser_circuit.cpp
+ * @file parser_circuit.hpp
  *
  * @brief Functions and structures related to parsing the circuit file
-*/
+ */
 
 #pragma once
 
@@ -16,8 +16,11 @@
  */
 struct ParsedGate
 {
+	/// Number of line that the gate was read from
 	size_t lineNumber;
+	/// Gate type (defined in gate.hpp)
 	GateType type = GateType::UNDEFINED;
+	/// Inputs and outputs for normal gates or input/output nodes when the type is GateType::INPUT or GateType::OUTPUT
 	std::vector<size_t> nodes;
 };
 

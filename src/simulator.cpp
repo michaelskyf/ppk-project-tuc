@@ -1,5 +1,5 @@
 /**
- * @file main.cpp
+ * @file simulator.cpp
  *
  * @brief Parse command-line arguments, intialize structures and run the simulation
  *

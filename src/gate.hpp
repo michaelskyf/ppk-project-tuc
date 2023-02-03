@@ -1,3 +1,9 @@
+/**
+ * @file gate.hpp
+ *
+ * @brief Structures, enums and functions related to the gate representation
+ */
+
 #pragma once
 
 #include <vector>
@@ -36,8 +42,11 @@ enum class GateValue
  */
 struct Gate
 {
+	/// Gate type
 	GateType type = GateType::UNDEFINED;
+	/// Inputs (other nodes that the gate needs to generate output)
 	std::vector<size_t> inputs;
+	/// Output value
 	GateValue value = GateValue::UNDEFINED;
 };
 

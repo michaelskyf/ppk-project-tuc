@@ -1,3 +1,9 @@
+/**
+ * @file output_writer.hpp
+ *
+ * @brief Header containing function used to write the output to a specific stream
+ */
+
 #pragma once
 
 #include "parser_input.hpp"

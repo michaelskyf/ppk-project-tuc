@@ -1,0 +1,22 @@
+\hypertarget{parser__circuit_8hpp_source}{}\doxysection{parser\+\_\+circuit.\+hpp}
+\label{parser__circuit_8hpp_source}\index{parser\_circuit.hpp@{parser\_circuit.hpp}}
+\mbox{\hyperlink{parser__circuit_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <cstddef>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{gate_8hpp}{gate.hpp}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structParsedGate}{ParsedGate}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structParsedGate_a7ec71830476cbf364f827da88938900c}{lineNumber}};}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{gate_8hpp_a842ca6790f315b3f79faf3cda6d6789c}{GateType}}\ \mbox{\hyperlink{structParsedGate_a6e2408a4e2de79ce4762f8c3574e1ace}{type}}\ =\ GateType::UNDEFINED;}
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<size\_t>\ \mbox{\hyperlink{structParsedGate_aec5cfabd08bc1e97d706e88462dcf49a}{nodes}};}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00034\ std::vector<ParsedGate>\ \mbox{\hyperlink{parser__circuit_8hpp_a25bec0160c79b87edc56a72810622576}{get\_circuit}}(\textcolor{keyword}{const}\ std::string\&\ filename);}
+
+\end{DoxyCode}

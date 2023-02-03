@@ -1,0 +1,96 @@
+\hypertarget{simulator_8cpp}{}\doxysection{simulator.\+cpp File Reference}
+\label{simulator_8cpp}\index{simulator.cpp@{simulator.cpp}}
+
+
+Parse command-\/line arguments, intialize structures and run the simulation.  
+
+
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$ios$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}gate.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parser\+\_\+circuit.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}parser\+\_\+input.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}simulator.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}output\+\_\+writer.\+hpp\char`\"{}}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{simulator_8cpp_a559f01e06ef45816f0810c11b8e40f05}\label{simulator_8cpp_a559f01e06ef45816f0810c11b8e40f05}} 
+typedef std\+::vector$<$ size\+\_\+t $>$ {\bfseries Output\+IDs}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{simulator_8cpp_a62c7e4e4f4f1d566f02d5f91fe2f42e5}\label{simulator_8cpp_a62c7e4e4f4f1d566f02d5f91fe2f42e5}} 
+void {\bfseries print\+\_\+help} (const std\+::string \&program\+\_\+name, std\+::ostream \&stream)
+\begin{DoxyCompactList}\small\item\em Display help message. \end{DoxyCompactList}\item 
+std\+::pair$<$ std\+::map$<$ size\+\_\+t, \mbox{\hyperlink{structGate}{Gate}} $>$, Output\+IDs $>$ \mbox{\hyperlink{simulator_8cpp_a893239a651958f848d84b5ddbdfebe70}{prepare\+\_\+simulation}} (const std\+::vector$<$ \mbox{\hyperlink{structParsedGate}{Parsed\+Gate}} $>$ \&parsed\+\_\+gates)
+\begin{DoxyCompactList}\small\item\em Convert initially parsed vector of gates to a map containing these gates. \end{DoxyCompactList}\item 
+Output\+Line \mbox{\hyperlink{simulator_8cpp_aa79e87b5667a078e0eab7eb64355db7d}{simulate\+\_\+circuit}} (std\+::map$<$ size\+\_\+t, \mbox{\hyperlink{structGate}{Gate}} $>$ nodes, const Input\+Line \&input, const std\+::vector$<$ size\+\_\+t $>$ \&outputs)
+\begin{DoxyCompactList}\small\item\em Resolve the outputs in the circuit. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{simulator_8cpp_a64a5c61f58831cd2eaca0aced750bfab}\label{simulator_8cpp_a64a5c61f58831cd2eaca0aced750bfab}} 
+std\+::string {\bfseries get\+\_\+optarg} (int \&index, int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Helper function used for extracting option argument from the argument vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{simulator_8cpp_a142fd2fb2732a306e8b3403c0f7b64fd}\label{simulator_8cpp_a142fd2fb2732a306e8b3403c0f7b64fd}} 
+int {\bfseries simulate} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em The main function of the program, where everything happens. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Parse command-\/line arguments, intialize structures and run the simulation. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{simulator_8cpp_a893239a651958f848d84b5ddbdfebe70}\label{simulator_8cpp_a893239a651958f848d84b5ddbdfebe70}} 
+\index{simulator.cpp@{simulator.cpp}!prepare\_simulation@{prepare\_simulation}}
+\index{prepare\_simulation@{prepare\_simulation}!simulator.cpp@{simulator.cpp}}
+\doxysubsubsection{\texorpdfstring{prepare\_simulation()}{prepare\_simulation()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::map$<$ size\+\_\+t, \mbox{\hyperlink{structGate}{Gate}} $>$, Output\+IDs $>$ prepare\+\_\+simulation (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{structParsedGate}{Parsed\+Gate}} $>$ \&}]{parsed\+\_\+gates }\end{DoxyParamCaption})}
+
+
+
+Convert initially parsed vector of gates to a map containing these gates. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em parsed\+\_\+gates} & Vector of unprocessed gates\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item first\+: Map with the whole circuit
+\item second\+: Vector with IDs of output nodes 
+\end{DoxyItemize}
+\end{DoxyReturn}
+\mbox{\Hypertarget{simulator_8cpp_aa79e87b5667a078e0eab7eb64355db7d}\label{simulator_8cpp_aa79e87b5667a078e0eab7eb64355db7d}} 
+\index{simulator.cpp@{simulator.cpp}!simulate\_circuit@{simulate\_circuit}}
+\index{simulate\_circuit@{simulate\_circuit}!simulator.cpp@{simulator.cpp}}
+\doxysubsubsection{\texorpdfstring{simulate\_circuit()}{simulate\_circuit()}}
+{\footnotesize\ttfamily Output\+Line simulate\+\_\+circuit (\begin{DoxyParamCaption}\item[{std\+::map$<$ size\+\_\+t, \mbox{\hyperlink{structGate}{Gate}} $>$}]{nodes,  }\item[{const Input\+Line \&}]{input,  }\item[{const std\+::vector$<$ size\+\_\+t $>$ \&}]{outputs }\end{DoxyParamCaption})}
+
+
+
+Resolve the outputs in the circuit. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em nodes} & Map of all logic gates\\
+\hline
+\mbox{\texttt{ in}}  & {\em input} & Values of the input nodes\\
+\hline
+\mbox{\texttt{ in}}  & {\em outputs} & Vector containing IDs of output nodes\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item success\+: Non-\/empty vector of output values
+\item failure\+: Empty vector 
+\end{DoxyItemize}
+\end{DoxyReturn}

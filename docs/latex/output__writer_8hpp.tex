@@ -1,0 +1,47 @@
+\hypertarget{output__writer_8hpp}{}\doxysection{output\+\_\+writer.\+hpp File Reference}
+\label{output__writer_8hpp}\index{output\_writer.hpp@{output\_writer.hpp}}
+
+
+Header containing function used to write the output to a specific stream.  
+
+
+{\ttfamily \#include \char`\"{}parser\+\_\+input.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{output__writer_8hpp_ab3bb1a9979392ca8f3dc4111211a875c}{output\+\_\+write}} (std\+::ostream \&stream, const std\+::vector$<$ Input\+Line $>$ \&input, const std\+::vector$<$ Output\+Line $>$ \&output)
+\begin{DoxyCompactList}\small\item\em Write the processed data to a stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header containing function used to write the output to a specific stream. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{output__writer_8hpp_ab3bb1a9979392ca8f3dc4111211a875c}\label{output__writer_8hpp_ab3bb1a9979392ca8f3dc4111211a875c}} 
+\index{output\_writer.hpp@{output\_writer.hpp}!output\_write@{output\_write}}
+\index{output\_write@{output\_write}!output\_writer.hpp@{output\_writer.hpp}}
+\doxysubsubsection{\texorpdfstring{output\_write()}{output\_write()}}
+{\footnotesize\ttfamily bool output\+\_\+write (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{stream,  }\item[{const std\+::vector$<$ Input\+Line $>$ \&}]{input,  }\item[{const std\+::vector$<$ Output\+Line $>$ \&}]{output }\end{DoxyParamCaption})}
+
+
+
+Write the processed data to a stream. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em stream} & Stream where the data will be saved\\
+\hline
+\mbox{\texttt{ in}}  & {\em input} & Vector containing lines with input states\\
+\hline
+\mbox{\texttt{ in}}  & {\em output} & Vector containing lines with output states\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\begin{DoxyItemize}
+\item true on success
+\item false on failure 
+\end{DoxyItemize}
+\end{DoxyReturn}
