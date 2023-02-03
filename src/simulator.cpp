@@ -204,6 +204,12 @@ int simulate(int argc, char* argv[])
 	const auto& output_ids = prepared.second;
 	std::vector<OutputLine> output;
 
+	if(nodes.empty())
+	{
+		std::cerr << "Failed to create a map of the circuit" << std::endl;
+		return -1;
+	}
+
 	// Simulate the circuit for different inputs
 	for(const auto& input : input_lines)
 	{
