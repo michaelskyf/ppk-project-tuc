@@ -39,7 +39,7 @@ void print_help(const std::string& program_name, std::ostream& stream)
  *			- first: Map with the whole circuit
  *			- second: Vector with IDs of output nodes
  */
-std::pair<std::map<size_t, Gate>, OutputIDs> prepare_simulation(const std::vector<ParsedGate>& parsed_gates)
+std::pair<std::map<size_t, Gate>, const OutputIDs> prepare_simulation(const std::vector<ParsedGate>& parsed_gates)
 {
 	std::map<size_t, Gate> result;
 	OutputIDs outputs;
@@ -199,9 +199,7 @@ int simulate(int argc, char* argv[])
 	// Prepare the environment
 	auto input_lines = get_inputs(input_file);
 	auto parsed_gates = get_circuit(circuit_file);
-	auto prepared = prepare_simulation(parsed_gates);
-	auto& nodes = prepared.first;
-	const auto& output_ids = prepared.second;
+	auto[nodes, output_ids] = prepare_simulation(parsed_gates);
 	std::vector<OutputLine> output;
 
 	if(nodes.empty())
