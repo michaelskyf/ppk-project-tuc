@@ -106,13 +106,12 @@ GateValue get_gate_value(Gate& gate, std::map<size_t, Gate>& nodes)
 	// Collect all values from inputs
 	for(size_t nodeID : gate.inputs)
 	{
-		auto nodes_pos = nodes.find(nodeID);
-		if(nodes_pos == nodes.end())
+		if(nodes.find(nodeID) == nodes.end())
 		{
 			return GateValue::UNDEFINED;
 		}
 
-		GateValue v = get_gate_value(nodes_pos->second, nodes);
+		GateValue v = get_gate_value(nodes.at(nodeID), nodes);
 
 		// If at least one input is invalid, we can't get the value of current gate
 		if(v == GateValue::UNDEFINED)

@@ -114,10 +114,9 @@ OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input
 	// Set the values of the inputs
 	for(const auto& in : input)
 	{
-		auto node_pos = nodes.find(in.nodeID);
-		if(node_pos != nodes.end())
+		if(nodes.find(in.nodeID) != nodes.end())
 		{
-			node_pos->second.value = (in.value ? GateValue::ONE : GateValue::ZERO);
+			nodes.at(in.nodeID).value = (in.value ? GateValue::ONE : GateValue::ZERO);
 		}
 		else
 		{
@@ -129,11 +128,10 @@ OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input
 	for(size_t out : outputs)
 	{
 		GateValue value = GateValue::UNDEFINED;
-		auto nodes_pos = nodes.find(out);
 		
-		if(nodes_pos != nodes.end())
+		if(nodes.find(out) != nodes.end())
 		{
-			value = get_gate_value(nodes_pos->second, nodes);
+			value = get_gate_value(nodes.at(out), nodes);
 		}
 
 		if(value == GateValue::UNDEFINED)
