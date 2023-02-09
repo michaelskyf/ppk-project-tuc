@@ -36,7 +36,7 @@ std::vector<InputLine> get_inputs(const std::string& filename)
 		std::string single_input;
 		std::stringstream ss(line);
 
-		while(ss >> single_input)
+		while(ss >> single_input) // ss -> cała linia, single_input "1:0"
 		{
 			in.emplace_back(get_single_input(single_input));
 		}

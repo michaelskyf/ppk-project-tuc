@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-static bool get_value_and(const std::vector<bool>& inputs)
+bool get_value_and(const std::vector<bool>& inputs)
 {
 	for(bool input : inputs)
 	{
@@ -16,12 +16,12 @@ static bool get_value_and(const std::vector<bool>& inputs)
 	return true;
 }
 
-static bool get_value_nand(const std::vector<bool>& inputs)
+bool get_value_nand(const std::vector<bool>& inputs)
 {
 	return !get_value_and(inputs);
 }
 
-static bool get_value_or(const std::vector<bool>& inputs)
+bool get_value_or(const std::vector<bool>& inputs)
 {
 	for(bool input : inputs)
 	{
@@ -34,12 +34,12 @@ static bool get_value_or(const std::vector<bool>& inputs)
 	return false;
 }
 
-static bool get_value_nor(const std::vector<bool>& inputs)
+bool get_value_nor(const std::vector<bool>& inputs)
 {
 	return !get_value_or(inputs);
 }
 
-static bool get_value_xor(const std::vector<bool>& inputs)
+bool get_value_xor(const std::vector<bool>& inputs)
 {
 	bool is_odd = false;
 	for(bool input : inputs)
@@ -53,43 +53,43 @@ static bool get_value_xor(const std::vector<bool>& inputs)
 	return is_odd;
 }
 
-static bool get_value_xnor(const std::vector<bool>& inputs)
+bool get_value_xnor(const std::vector<bool>& inputs)
 {
 	return !get_value_xor(inputs);
 }
 
-static bool get_value_neg(const std::vector<bool>& inputs)
+bool get_value_neg(const std::vector<bool>& inputs)
 {
 	return !inputs.front();
 }
 
-static bool get_value(GateType type, const std::vector<bool>& inputs)
+std::pair<bool, bool> get_value(GateType type, const std::vector<bool>& inputs)
 {
 	switch(type)
 	{
 		case GateType::AND:
-		return get_value_and(inputs);
+		return { true, get_value_and(inputs) };
 
 		case GateType::NAND:
-		return get_value_nand(inputs);
+		return { true, get_value_nand(inputs) };
 
 		case GateType::OR:
-		return get_value_or(inputs);
+		return { true, get_value_or(inputs) };
 
 		case GateType::NOR:
-		return get_value_nor(inputs);
+		return { true, get_value_nor(inputs) };
 
 		case GateType::XOR:
-		return get_value_xor(inputs);
+		return { true, get_value_xor(inputs) };
 
 		case GateType::XNOR:
-		return get_value_xnor(inputs);
+		return { true, get_value_xnor(inputs) };
 
 		case GateType::NEG:
-		return get_value_neg(inputs);
+		return { true, get_value_neg(inputs) };
 
 		default:
-		throw std::runtime_error(std::string("Invalid gate type at") + __FILE__ + ": " + std::to_string(__LINE__));
+		return {false, 0};
 	}
 }
 
@@ -106,13 +106,13 @@ GateValue get_gate_value(Gate& gate, std::map<size_t, Gate>& nodes)
 	// Collect all values from inputs
 	for(size_t nodeID : gate.inputs)
 	{
-		GateValue v = GateValue::UNDEFINED;
-		try
+		auto nodes_pos = nodes.find(nodeID);
+		if(nodes_pos == nodes.end())
 		{
-			v = get_gate_value(nodes.at(nodeID), nodes);
+			return GateValue::UNDEFINED;
 		}
-		catch(...)
-		{}
+
+		GateValue v = get_gate_value(nodes_pos->second, nodes);
 
 		// If at least one input is invalid, we can't get the value of current gate
 		if(v == GateValue::UNDEFINED)
@@ -124,7 +124,13 @@ GateValue get_gate_value(Gate& gate, std::map<size_t, Gate>& nodes)
 	}
 
 	// Return and set the value according to a gate type
-	bool value = get_value(gate.type, input_values);
+	auto[is_valid, value] = get_value(gate.type, input_values);
+
+	if(is_valid == false)
+	{
+		return GateValue::UNDEFINED;
+	}
+
 	if(value)
 	{
 		gate.value = GateValue::ONE;

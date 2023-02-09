@@ -114,11 +114,12 @@ OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input
 	// Set the values of the inputs
 	for(const auto& in : input)
 	{
-		try
+		auto node_pos = nodes.find(in.nodeID);
+		if(node_pos != nodes.end())
 		{
-			nodes.at(in.nodeID).value = (in.value ? GateValue::ONE : GateValue::ZERO);
+			node_pos->second.value = (in.value ? GateValue::ONE : GateValue::ZERO);
 		}
-		catch(...)
+		else
 		{
 			std::cerr << "Error: Input '" << in.nodeID << "' does not exist. Aborting" << std::endl;
 			return {};
@@ -127,21 +128,21 @@ OutputLine simulate_circuit(std::map<size_t, Gate> nodes, const InputLine& input
 
 	for(size_t out : outputs)
 	{
-		try
+		GateValue value = GateValue::UNDEFINED;
+		auto nodes_pos = nodes.find(out);
+		
+		if(nodes_pos != nodes.end())
 		{
-			auto value = get_gate_value(nodes.at(out), nodes);
-			if(value == GateValue::UNDEFINED)
-			{
-				throw std::runtime_error("Error");
-			}
-
-			result.push_back({out, value == GateValue::ONE ? true : false});
+			value = get_gate_value(nodes_pos->second, nodes);
 		}
-		catch(...)
+
+		if(value == GateValue::UNDEFINED)
 		{
 			std::cerr << "Error while processing output '" << out << "'. Aborting" << std::endl;
 			return {};
 		}
+
+		result.push_back({out, value == GateValue::ONE ? true : false});
 	}
 
 	return result;

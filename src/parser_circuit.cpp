@@ -64,7 +64,7 @@ std::vector<ParsedGate> get_circuit(const std::string& filename)
 		std::string gate_type;
 		std::stringstream ss(line);
 
-		ss >> gate_type;
+		ss >> gate_type; // "AND 1 3 5"
 		new_gate.type = get_type(gate_type);
 		new_gate.lineNumber = lineNumber++;
 
